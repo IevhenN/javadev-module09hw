@@ -4,7 +4,7 @@ import home.hw.service.ResourceNotFoundException;
 import home.hw.service.Writer;
 
 public class HttpStatusImageDownloader {
-    public void downloadStatusImage(int code) throws ResourceNotFoundException {
+    public void downloadStatusImage(int code) throws Exception {
         String path = new HttpStatusChecker().getStatusImage(code);
 
         if (path == null) {

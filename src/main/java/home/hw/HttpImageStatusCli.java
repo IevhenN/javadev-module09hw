@@ -1,17 +1,17 @@
 package home.hw;
 
 import home.hw.service.ResourceNotFoundException;
-
 import java.util.Scanner;
 
 public class HttpImageStatusCli {
-    public void askStatus() {
+    public void askStatus() throws Exception {
         int code = requestCode();
         if (code == -1) return;
 
         try {
             new HttpStatusChecker().getStatusImage(code);
         } catch (ResourceNotFoundException e) {
+            System.out.printf("There is not image for HTTP status <%s>%n",code);
             e.printStackTrace();
             return;
         }
@@ -43,7 +43,7 @@ public class HttpImageStatusCli {
         return code;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         new HttpImageStatusCli().askStatus();
     }
 }
